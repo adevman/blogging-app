@@ -1,0 +1,24 @@
+<%- include('partials/header'); -%>
+<div class="ui main container segment marginFromNav">
+    <div class="ui huge header">
+        Edit <%= blog.title %>
+        <form class="ui form" action="/blogs/<%= blog._id %>?_method=PUT" method="POST">
+            <div class="field">
+                <label>Title</label>
+                <input type="text" placeholder="Title" name="blog[title]" value="<%= blog.title %>" required autocomplete="off">
+            </div>
+            <div class="field">
+                <label>Image</label>
+                <input type="text" placeholder="Image" name="blog[image]" value="<%= blog.image %>" required autocomplete="off">
+            </div>
+            <div>
+                <label>Description</label>
+                <textarea name="blog[body]" cols="30" rows="10" placeholder="Description" required><%- blog.body %></textarea>
+            </div>
+            <div class="field" style="margin-top: 2rem;display: flex;justify-content: center;">
+                <input class="ui violet inverted button big" type="submit">
+            </div>
+        </form>
+    </div>
+</div>
+<%- include('partials/footer'); -%>
