@@ -49,6 +49,18 @@ app.get('/blogs/new',(req,res)=>{
     res.render('new');
 })
 
+//CREATE
+app.post('/blogs',(req,res)=>{
+    req.body.blog.body = req.sanitize(req.body.blog.body);
+    Blog.create(req.body.blog,(err,newBlog)=>{
+        if(err){
+            res.render('new');
+        } else {
+            res.redirect('/blogs');
+        }
+    })
+})
+
 app.listen('4030',function(req,res){
     console.log("SERVER IS IN GOOD CONDITION");
 })
