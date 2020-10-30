@@ -61,6 +61,17 @@ app.post('/blogs',(req,res)=>{
     })
 })
 
+//SHOW
+app.get('/blogs/:id',(req,res)=>{
+    Blog.findById(req.params.id,(err,foundBlog)=>{
+        if(err){
+            res.redirect('/blogs');
+        } else {
+            res.render('show',{blog:foundBlog});
+        }
+    })
+})
+
 app.listen('4030',function(req,res){
     console.log("SERVER IS IN GOOD CONDITION");
 })
