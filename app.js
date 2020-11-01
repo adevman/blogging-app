@@ -72,6 +72,18 @@ app.get('/blogs/:id',(req,res)=>{
     })
 })
 
+//EDIT
+
+app.get('/blogs/:id/edit',(req,res)=>{
+    Blog.findById(req.params.id,(err,foundBlog)=>{
+        if(err){
+            res.redirect('/blogs');
+        } else {
+            res.render('edit',{blog:foundBlog});
+        }
+    })  
+})
+
 app.listen('4030',function(req,res){
     console.log("SERVER IS IN GOOD CONDITION");
 })
